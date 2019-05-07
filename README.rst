@@ -2,7 +2,7 @@
 django-trix
 ===========
 
-`Trix rich text editor <http://trix-editor.org>`_ widget for Django, using Trix 1.0.0.
+`Trix rich text editor <http://trix-editor.org>`_ widget for Django, using Trix 1.1.1.
 
 .. image:: https://circleci.com/gh/istrategylabs/django-trix/tree/master.svg?style=shield
     :target: https://circleci.com/gh/istrategylabs/django-trix/tree/master
