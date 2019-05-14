@@ -1,7 +1,7 @@
 from django.conf.urls import include, url
-from .views import AttachmentView
+from .views import UploadTrixAttachment
 
 
 urlpatterns = [
-    url(r'^attachment/$', AttachmentView.as_view()),
+    url(r'^attachment/$', UploadTrixAttachment.as_view()),
 ]
