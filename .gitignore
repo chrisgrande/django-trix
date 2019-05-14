@@ -17,3 +17,4 @@ media/
 coverage_html_report
 .DS_Store
 .idea
+uploaded/*
