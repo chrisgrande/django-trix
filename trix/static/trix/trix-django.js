@@ -22,19 +22,43 @@ function getCookie(name) {
     return cookieValue;
 }
 
-// document.addEventListener('trix-file-accept', function(ev) {
-//   ev.preventDefault();
-// });
+function uploadAttachment(attachment) {
+    // Create form data to submit
+    let file = attachment.file;
+    let form = new FormData;
+    form.append("Content-Type", file.type);
+    form.append("trix-attachment", file);
 
-document.addEventListener('trix-attachment-add', function(ev) {
+    // Create XHR request
+    let request = new XMLHttpRequest();
+    request.open('POST', '/trix/attachment/', true);
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    request.setRequestHeader("X-CSRF-Token", getCookie('csrftoken'));
 
-  var data = {};
+    // Report file uploads back to Trix
+    request.upload.onprogress = function(event) {
+        let progress = event.loaded / event.total * 100;
+        attachment.setUploadProgress(progress);
+    };
 
-  var request = new XMLHttpRequest();
-  request.open('POST', '/trix/attachment/', true);
-  request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-  xhr.setRequestHeader("X-CSRF-Token", getCookie('csrftoken'));
-  request.send(data);
+    // Tell Trix what url and href to use on successful upload
+    request.onload = function() {
+        if (request.status === 201) {
+            let data = JSON.parse(request.responseText);
+            return attachment.setAttributes({
+                url: data.image_url,
+                href: data.url
+            })
+        }
+    };
 
+  return request.send(form);
+}
+
+document.addEventListener('trix-attachment-add', function(event) {
+    let attachment = event.attachment;
+
+    if (attachment.file) {
+        return uploadAttachment(attachment);
+    }
 });
-
