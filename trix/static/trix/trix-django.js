@@ -55,8 +55,16 @@ function uploadAttachment(attachment) {
 
 document.addEventListener('trix-attachment-add', function(event) {
     var attachment = event.attachment;
-
     if (attachment.file) {
         return uploadAttachment(attachment);
     }
+});
+
+// Fix for FormSet __prefix__
+addEventListener("trix-initialize", function(event) {
+  var trixElement = event.target;
+  if (trixElement.getAttribute("input") === "id_child_set-__prefix__-content") {
+    var inputElement = trixElement.closest(".field-content").querySelector("textarea");
+    trixElement.setAttribute("input", inputElement.id)
+  }
 });
