@@ -56,5 +56,6 @@ DATABASES = {
     }
 }
 
-MEDIA_PATH = '/media/'
 STATIC_URL = '/static/'
+MEDIA_ROOT = 'uploaded/'
+MEDIA_URL = '/media/'
