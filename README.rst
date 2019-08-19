@@ -100,8 +100,12 @@ Add route to *urls.py*::
     ]
 
 
-TODO
-----
+Attachment Upload
+-----------------
 
-* A bunch of stuff!
-* Attachment uploads
+Uploading of attachments uses native Django Storage, if DEFAULT_FILE_STORAGE is replaced with django-storages or
+some other storage backend it should work as expected.
+
+The upload functionality expects the storage backend to return a complete URL to the attachment.
+
+Uploaded attachments are placed in a randomly named directory along with the file named to a UUID.
