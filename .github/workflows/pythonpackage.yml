@@ -31,3 +31,5 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+      env:
+        DJANGO_SETTINGS_MODULE: tests.testapp.settings
