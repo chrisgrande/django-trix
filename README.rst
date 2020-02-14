@@ -4,8 +4,6 @@ django-trix
 
 `Trix rich text editor <http://trix-editor.org>`_ widget for Django, using Trix 1.2.0.
 
-![Python package](https://github.com/chrisgrande/django-trix/workflows/Python%20package/badge.svg)
-
 Using django-trix
 -----------------
 
