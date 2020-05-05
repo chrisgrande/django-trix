@@ -2,14 +2,14 @@
 django-trix
 ===========
 
-`Trix rich text editor <http://trix-editor.org>`_ widget for Django, using Trix 1.2.2.
+`Trix rich text editor <http://trix-editor.org>`_ widget for Django, using Trix 1.2.3.
 
 Using django-trix
 -----------------
 
 django-trix includes a form widget, a model field, and a model admin mixin that
 enables the rich text editor. You can use any of these methods, but you do not
-need to use all.
+need to use all.q
 
 Model
 ~~~~~
