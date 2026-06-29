@@ -7,4 +7,4 @@ class TrixField(models.TextField):
 
     def formfield(self, **kwargs):
         kwargs.update({'widget': TrixEditor})
-        return super(TrixField, self).formfield(**kwargs)
+        return super().formfield(**kwargs)
